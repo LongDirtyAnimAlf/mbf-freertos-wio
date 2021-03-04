@@ -1,3 +1,4 @@
-[submodule "FreeRTOS by MBF"]
+[submodule "mbf-freertos"]
 	path = mbf-freertos
-	url = git@github.com:michael-ring/mbf-freertos.git
+	url = https://github.com/michael-ring/mbf-freertos
+	branch = master
