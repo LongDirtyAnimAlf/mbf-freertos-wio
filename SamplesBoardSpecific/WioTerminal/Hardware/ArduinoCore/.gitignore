@@ -1,0 +1,6 @@
+*.bz2
+*.atsuo
+.vscode/
+bootloaders/*/build/
+*~
+git-archive-full.sh
