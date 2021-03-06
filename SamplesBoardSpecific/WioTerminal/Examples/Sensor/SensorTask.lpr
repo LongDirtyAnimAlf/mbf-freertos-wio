@@ -110,14 +110,14 @@ begin
   setTextSize(1);
   fillScreen(TFT_BLACK);
   disp_sight;
-  drawString('Angle', 5, 20, 2);
-  drawString('X: ', 10, 40, 2);
-  drawString('Y: ', 10, 60, 2);
-  drawString('Accel.', 5, 120, 2);
-  drawString('X: ', 10, 140, 2);
-  drawString('Y: ', 10, 160, 2);
-  drawString('Z: ', 10, 180, 2);
-  drawString('Scale', 238, 20, 2);
+  drawString('Angle', 5, 20, TTEXTFONT.FONT2);
+  drawString('X: ', 10, 40, TTEXTFONT.FONT2);
+  drawString('Y: ', 10, 60, TTEXTFONT.FONT2);
+  drawString('Accel.', 5, 120, TTEXTFONT.FONT2);
+  drawString('X: ', 10, 140, TTEXTFONT.FONT2);
+  drawString('Y: ', 10, 160, TTEXTFONT.FONT2);
+  drawString('Z: ', 10, 180, TTEXTFONT.FONT2);
+  drawString('Scale', 238, 20, TTEXTFONT.FONT2);
 
   while true do
   begin
@@ -155,16 +155,16 @@ begin
       fillRect(50,40,72,35,TFT_BLACK);
       fillRect(50,140,72,55,TFT_BLACK);
 
-      drawString(PChar(FloattoStrF(180.0/3.1415*asin(x_values),ffFixed,3,1)), 50, 40, 2);
-      drawString(PChar(FloattoStrF(180.0/3.1415*asin(y_values),ffFixed,3,1)), 50, 60, 2);
-      drawString(PChar(FloattoStrF(x_values,ffFixed,6,3)), 50, 140, 2);
-      drawString(PChar(FloattoStrF(y_values,ffFixed,6,3)), 50, 160, 2);
-      drawString(PChar(FloattoStrF(z_values,ffFixed,6,3)), 50, 180, 2);
+      drawString(PChar(FloattoStrF(180.0/3.1415*asin(x_values),ffFixed,3,1)), 50, 40, TTEXTFONT.FONT2);
+      drawString(PChar(FloattoStrF(180.0/3.1415*asin(y_values),ffFixed,3,1)), 50, 60, TTEXTFONT.FONT2);
+      drawString(PChar(FloattoStrF(x_values,ffFixed,6,3)), 50, 140, TTEXTFONT.FONT2);
+      drawString(PChar(FloattoStrF(y_values,ffFixed,6,3)), 50, 160, TTEXTFONT.FONT2);
+      drawString(PChar(FloattoStrF(z_values,ffFixed,6,3)), 50, 180, TTEXTFONT.FONT2);
 
       if (scale <> p_scale) then
       begin
         fillRect(260,41,25,20,TFT_BLACK);
-        drawString(PChar(InttoStr(scale)), 260, 41, 2);
+        drawString(PChar(InttoStr(scale)), 260, 41, TTEXTFONT.FONT2);
       end;
 
       fillCircle(p_plot_x,p_plot_y,10,TFT_BLACK);

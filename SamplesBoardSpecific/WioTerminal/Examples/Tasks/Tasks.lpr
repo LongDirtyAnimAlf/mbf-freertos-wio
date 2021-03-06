@@ -57,8 +57,8 @@ begin
   setTextColor(color565(239,220,5)); // YELLOW text
 
   setTextSize(2);
-  drawString('Thread A', 20, 50, 2);
-  drawString('Thread B', 180, 50, 2);
+  drawString('Thread A', 20, 50, TTEXTFONT.FONT2);
+  drawString('Thread B', 180, 50, TTEXTFONT.FONT2);
 
   vTaskResume(Handle_aTask);
   vTaskResume(Handle_bTask);
@@ -81,7 +81,7 @@ begin
   LastWakeTime := SystemCore.GetTickCount;
   while (i<100) do
   begin
-    SpriteDrawNumber(img, i, 2, 2, 2);
+    SpriteDrawNumber(img, i, 2, 2, TTEXTFONT.FONT2);
     SpritePushSprite(img, 30, 90);
     SpriteFill(img, color565(229,58,64));
     //SystemCore.Delay(1000);
@@ -107,7 +107,7 @@ begin
   LastWakeTime := SystemCore.GetTickCount;
   while (i<100) do
   begin
-    SpriteDrawNumber(img, i, 2, 2, 2);
+    SpriteDrawNumber(img, i, 2, 2, TTEXTFONT.FONT2);
     SpritePushSprite(img, 190, 90);
     SpriteFill(img, color565(48,179,222)); // BLUE
     //SystemCore.Delay(500);

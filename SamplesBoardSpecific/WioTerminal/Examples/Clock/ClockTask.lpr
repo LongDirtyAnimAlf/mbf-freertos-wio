@@ -106,7 +106,7 @@ begin
   fillCircle(120, 121, 3, TFT_WHITE);
 
   setTextColor(TFT_WHITE, TFT_BLUE);
-  drawString('Time flies', 10, 260, 1);
+  drawString('Time flies', 10, 260, TTEXTFONT.GFXFF);
 
   ss:=0;
   mm:=0;
