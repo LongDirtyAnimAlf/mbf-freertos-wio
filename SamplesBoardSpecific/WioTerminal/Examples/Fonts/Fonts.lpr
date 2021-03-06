@@ -68,17 +68,33 @@ var
   LastWakeTime:TMilliseconds;
   aFont:TGFXFONT;
   aPChar:PChar;
+  width,height:Smallint;
 begin
   LastWakeTime := SystemCore.GetTickCount;
   while (true) do
   begin
     for aFont in TGFXFONT do
     begin
+      //Smart erase previous string
+      width:=textWidth('Hello', TTEXTFONT.GFXFF);
+      height:=fontHeight(TTEXTFONT.GFXFF);
+      {
+      fillRect(10,40,320-10,40,TFT_BLACK);
+      drawString('w:', 10, 40, TTEXTFONT.FONT2);
+      drawNumber(width, 40, 40, TTEXTFONT.FONT2);
+      drawString('h:', 150, 40, TTEXTFONT.FONT2);
+      drawNumber(height, 180, 40, TTEXTFONT.FONT2);
+      }
+      fillRect(10,80,width,height,TFT_BLACK);
+
+      // Set font and draw string
       setGFXFont(aFont);
-      fillRect(0,80,320,240-80,TFT_BLACK);
       drawString('Hello', 10, 80, TTEXTFONT.GFXFF);
+
       aPChar:=@FONTNAMES[aFont][1];
+      fillRect(10,200,320-10,240-200,TFT_BLACK);
       drawString(aPChar, 10, 200, TTEXTFONT.FONT2);
+
       SystemCore.DelayUntil(LastWakeTime,1000);
     end;
   end;
@@ -119,7 +135,7 @@ begin
   LCDFontTaskHandle := nil;
   if xTaskCreate(@LCD_TASK_FONT,
                  'Task Font',
-                 configMINIMAL_STACK_SIZE*2,
+                 configMINIMAL_STACK_SIZE*4,
                  nil,
                  tskIDLE_PRIORITY+2,
                  LCDFontTaskHandle)= pdPass then

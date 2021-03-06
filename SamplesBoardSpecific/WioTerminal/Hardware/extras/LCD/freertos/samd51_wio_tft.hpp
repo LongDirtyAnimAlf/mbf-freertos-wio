@@ -44,6 +44,9 @@ void tft_drawFastHLine(TFTHandle NewTFT, int32_t x, int32_t y, int32_t w, uint32
 int16_t tft_height(TFTHandle NewTFT);
 int16_t tft_width(TFTHandle NewTFT);
 
+int16_t tft_textWidth(TFTHandle NewTFT, const char *string, uint8_t font);
+int16_t tft_fontHeight(TFTHandle NewTFT, int16_t font);
+
 void tft_drawCircle(TFTHandle NewTFT, int32_t x0, int32_t y0, int32_t r, uint32_t color);
 void tft_fillCircle(TFTHandle NewTFT, int32_t x0, int32_t y0, int32_t r, uint32_t color);
 

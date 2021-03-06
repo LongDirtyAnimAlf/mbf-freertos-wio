@@ -169,6 +169,12 @@ int16_t tft_height(TFTHandle NewTFT)
 int16_t tft_width(TFTHandle NewTFT)
 { return NewTFT->width(); }
 
+int16_t tft_textWidth(TFTHandle NewTFT, const char *string, uint8_t font)
+{ return NewTFT->textWidth(string, font); }
+
+int16_t tft_fontHeight(TFTHandle NewTFT, int16_t font)
+{ return NewTFT->fontHeight(font); }
+
 void tft_fillRect(TFTHandle NewTFT, int32_t x, int32_t y, int32_t w, int32_t h, uint32_t color)
 { NewTFT->fillRect(x, y, w, h, color);}
 
@@ -346,7 +352,7 @@ void tft_setFreeFont(TFTHandle NewTFT, uint8_t aFont)
             f=(GFXfont*)FF48;
             break;
     }
-    NewTFT->setFreeFont(f);    
+    NewTFT->setFreeFont(f);
 }
 
 uint16_t tft_color565(TFTHandle NewTFT, uint8_t red, uint8_t green, uint8_t blue)
