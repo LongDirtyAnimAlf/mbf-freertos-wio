@@ -38,8 +38,8 @@
       <Filename Value="bin\Fonts"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);C:\fpclazbydeluxe\newestbedded\ccr\mbf-freertos\source\"/>
-      <OtherUnitFiles Value="C:\fpclazbydeluxe\newestbedded\ccr\mbf-freertos\source\"/>
+      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\mbf-freertos\source"/>
+      <OtherUnitFiles Value="..\..\..\..\..\mbf-freertos\source"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
