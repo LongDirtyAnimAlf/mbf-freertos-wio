@@ -71,25 +71,29 @@ var
   width,height:Smallint;
 begin
   LastWakeTime := SystemCore.GetTickCount;
+
+  width:=0;
+  height:=0;
+
   while (true) do
   begin
     for aFont in TGFXFONT do
     begin
       //Smart erase previous string
-      width:=textWidth('Hello', TTEXTFONT.GFXFF);
-      height:=fontHeight(TTEXTFONT.GFXFF);
-      {
-      fillRect(10,40,320-10,40,TFT_BLACK);
-      drawString('w:', 10, 40, TTEXTFONT.FONT2);
-      drawNumber(width, 40, 40, TTEXTFONT.FONT2);
-      drawString('h:', 150, 40, TTEXTFONT.FONT2);
-      drawNumber(height, 180, 40, TTEXTFONT.FONT2);
-      }
       fillRect(10,80,width,height,TFT_BLACK);
 
       // Set font and draw string
       setGFXFont(aFont);
       drawString('Hello', 10, 80, TTEXTFONT.GFXFF);
+
+      width:=textWidth('Hello', TTEXTFONT.GFXFF);
+      height:=fontHeight(TTEXTFONT.GFXFF);
+
+      fillRect(10,40,320-10,40,TFT_BLACK);
+      drawString('w:', 10, 40, TTEXTFONT.FONT2);
+      drawNumber(width, 40, 40, TTEXTFONT.FONT2);
+      drawString('h:', 150, 40, TTEXTFONT.FONT2);
+      drawNumber(height, 180, 40, TTEXTFONT.FONT2);
 
       aPChar:=@FONTNAMES[aFont][1];
       fillRect(10,200,320-10,240-200,TFT_BLACK);
