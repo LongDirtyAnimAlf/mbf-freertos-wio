@@ -55,6 +55,9 @@ void tft_setTextColor(TFTHandle NewTFT, uint16_t fgcolor, uint16_t bgcolor);
 void tft_setTextSize(TFTHandle NewTFT, uint8_t size);
 
 uint16_t tft_fontsLoaded(TFTHandle NewTFT);
+void tft_setTextFont(TFTHandle NewTFT, uint8_t aFont);
+void tft_setFreeFont(TFTHandle NewTFT, uint8_t aFont);
+
 uint16_t tft_color565(TFTHandle NewTFT, uint8_t red, uint8_t green, uint8_t blue);
 uint16_t tft_color8to16(TFTHandle NewTFT, uint8_t color332);
 uint8_t tft_color16to8(TFTHandle NewTFT, uint16_t color565);

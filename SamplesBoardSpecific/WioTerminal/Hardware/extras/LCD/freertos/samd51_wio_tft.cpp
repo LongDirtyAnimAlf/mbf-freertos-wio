@@ -190,6 +190,165 @@ void tft_fillCircle(TFTHandle NewTFT, int32_t x0, int32_t y0, int32_t r, uint32_
 uint16_t tft_fontsLoaded(TFTHandle NewTFT)
 { return NewTFT->fontsLoaded();}
 
+void tft_setTextFont(TFTHandle NewTFT, uint8_t aFont)
+{ NewTFT->setTextFont(aFont);}
+
+void tft_setFreeFont(TFTHandle NewTFT, uint8_t aFont)
+{ 
+    GFXfont* f;
+    f=nullptr;    
+    switch (aFont) {
+        case 1:
+            f=(GFXfont*)TT1;
+            break;
+        case 2:
+            f=(GFXfont*)FF1;
+            break;
+        case 3:
+            f=(GFXfont*)FF2;
+            break;
+        case 4:
+            f=(GFXfont*)FF3;
+            break;
+        case 5:
+            f=(GFXfont*)FF4;
+            break;
+        case 6:
+            f=(GFXfont*)FF5;
+            break;
+        case 7:
+            f=(GFXfont*)FF6;
+            break;
+        case 8:
+            f=(GFXfont*)FF7;
+            break;
+        case 9:
+            f=(GFXfont*)FF8;
+            break;
+        case 10:
+            f=(GFXfont*)FF9;
+            break;
+        case 11:
+            f=(GFXfont*)FF10;
+            break;
+        case 12:
+            f=(GFXfont*)FF11;
+            break;
+        case 13:
+            f=(GFXfont*)FF12;
+            break;
+        case 14:
+            f=(GFXfont*)FF13;
+            break;
+        case 15:
+            f=(GFXfont*)FF14;
+            break;
+        case 16:
+            f=(GFXfont*)FF15;
+            break;
+        case 17:
+            f=(GFXfont*)FF16;
+            break;
+        case 18:
+            f=(GFXfont*)FF17;
+            break;
+        case 19:
+            f=(GFXfont*)FF18;
+            break;
+        case 20:
+            f=(GFXfont*)FF19;
+            break;
+        case 21:
+            f=(GFXfont*)FF20;
+            break;
+        case 22:
+            f=(GFXfont*)FF21;
+            break;
+        case 23:
+            f=(GFXfont*)FF22;
+            break;
+        case 24:
+            f=(GFXfont*)FF23;
+            break;
+        case 25:
+            f=(GFXfont*)FF24;
+            break;
+        case 26:
+            f=(GFXfont*)FF25;
+            break;
+        case 27:
+            f=(GFXfont*)FF26;
+            break;
+        case 28:
+            f=(GFXfont*)FF27;
+            break;
+        case 29:
+            f=(GFXfont*)FF28;
+            break;
+        case 30:
+            f=(GFXfont*)FF29;
+            break;
+        case 31:
+            f=(GFXfont*)FF30;
+            break;
+        case 32:
+            f=(GFXfont*)FF31;
+            break;
+        case 33:
+            f=(GFXfont*)FF32;
+            break;
+        case 34:
+            f=(GFXfont*)FF33;
+            break;
+        case 35:
+            f=(GFXfont*)FF34;
+            break;
+        case 36:
+            f=(GFXfont*)FF35;
+            break;
+        case 37:
+            f=(GFXfont*)FF36;
+            break;
+        case 38:
+            f=(GFXfont*)FF37;
+            break;
+        case 39:
+            f=(GFXfont*)FF38;
+            break;
+        case 40:
+            f=(GFXfont*)FF39;
+            break;
+        case 41:
+            f=(GFXfont*)FF40;
+            break;
+        case 42:
+            f=(GFXfont*)FF41;
+            break;
+        case 43:
+            f=(GFXfont*)FF42;
+            break;
+        case 44:
+            f=(GFXfont*)FF43;
+            break;
+        case 45:
+            f=(GFXfont*)FF44;
+            break;
+        case 46:
+            f=(GFXfont*)FF45;
+            break;
+        case 47:
+            f=(GFXfont*)FF46;
+            break;
+        case 48:
+            f=(GFXfont*)FF47;
+            break;
+        case 49:
+            f=(GFXfont*)FF48;
+            break;
+    }
+    NewTFT->setFreeFont(f);    
+}
+
 uint16_t tft_color565(TFTHandle NewTFT, uint8_t red, uint8_t green, uint8_t blue)
 { return NewTFT->color565(red, green, blue); }
 

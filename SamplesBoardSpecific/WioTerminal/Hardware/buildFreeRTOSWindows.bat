@@ -10,7 +10,7 @@
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
-set CROSS=C:\fpclazbydeluxe\newembedded\cross
+set CROSS=C:\fpclazbydeluxe\newestbedded\cross
 set SDK=%CROSS%\bin\arm-freertos\arm-none-eabi\lib
 set GCC=%CROSS%\bin\arm-freertos
 
