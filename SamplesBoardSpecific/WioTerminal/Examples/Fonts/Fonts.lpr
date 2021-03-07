@@ -84,16 +84,22 @@ begin
 
       // Set font and draw string
       setGFXFont(aFont);
-      drawString('Hello', 10, 80, TTEXTFONT.GFXFF);
 
       width:=textWidth('Hello', TTEXTFONT.GFXFF);
       height:=fontHeight(TTEXTFONT.GFXFF);
+
+      fillRoundRect(10,80,width,height,5,TFT_RED);
+
+      drawString('Hello', 10, 80, TTEXTFONT.GFXFF);
+
 
       fillRect(10,40,320-10,40,TFT_BLACK);
       drawString('w:', 10, 40, TTEXTFONT.FONT2);
       drawNumber(width, 40, 40, TTEXTFONT.FONT2);
       drawString('h:', 150, 40, TTEXTFONT.FONT2);
       drawNumber(height, 180, 40, TTEXTFONT.FONT2);
+
+
 
       aPChar:=@FONTNAMES[aFont][1];
       fillRect(10,200,320-10,240-200,TFT_BLACK);
