@@ -10,7 +10,7 @@
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
-set CROSS=C:\fpclazbydeluxe\newestbedded\cross
+set CROSS=C:\fpclazbydeluxe\trunk\cross
 set SDK=%CROSS%\bin\arm-freertos\arm-none-eabi\lib
 set GCC=%CROSS%\bin\arm-freertos
 
@@ -48,7 +48,7 @@ copy %FREERTOSDIR%\FreeRTOSConfig.h FreeRTOSConfig.h
 set USBFLAGS=-DUSE_TINYUSB -DUSB_VID=0x2886 -DUSB_PID=0x802D -DUSBCON -DUSB_CONFIG_POWER=100 -DROLE=0 "-DUSB_MANUFACTURER=\"Seeed Studio\"" "-DUSB_PRODUCT=\"Seeed Wio Terminal\""
 set CFLAGS=-Wno-nonnull -Wno-unused-value -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -g3 -ffunction-sections -fdata-sections --param max-inline-insns-single=500 -fno-exceptions -O3 -fdevirtualize-at-ltrans -Wall -fstack-usage
 set CXXFLAGS=-CC -Wno-nonnull -Wno-unused-value -fpermissive -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -c -g -O3 -fdevirtualize-at-ltrans -w -std=gnu++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -fno-use-cxa-atexit
-set INCLUDES=-I. -I%FREERTOSDIR% -I%ARDUINODIR%\cores\arduino -I%ARDUINODIR%\libraries\Wire -I%ARDUINODIR%\libraries\Seeed_Arduino_LIS3DHTR\src -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\freertos -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\Fonts -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\TFT_Drivers -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\User_Setups -I%ARDUINODIR%\libraries\SPI -I%ARDUINODIR%\libraries\Adafruit_ZeroDMA  -I%BOARDDIR%\extras\System -I%BOARDDIR%\extras\TinyUSB\freertos -I%BOARDDIR%\extras\LCD\freertos -I%BOARDDIR%\extras\Lis\freertos -I%ARDUINODIR%\cores\arduino\TinyUSB\Adafruit_TinyUSB_ArduinoCore\tinyusb\src -I%CMSISDIR%\samd51\include -I%ARDUINODIR%\variants\wio_terminal -I%CMSISCOREDIR%\Core\Include -I%CMSISCOREDIR%\DSP\Include -I%FREERTOSDIR%\boards\SAMD21\FreeRTOSVariant -I%FREERTOSDIR%\boards\SAMD51\FreeRTOSVariant
+set INCLUDES=-I. -I%FREERTOSDIR% -I%ARDUINODIR%\cores\arduino -I%ARDUINODIR%\libraries\Wire -I%ARDUINODIR%\libraries\Seeed_MCP9600 -I%ARDUINODIR%\libraries\Seeed_Arduino_LIS3DHTR\src -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\freertos -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\Fonts -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\TFT_Drivers -I%ARDUINODIR%\libraries\Seeed_Arduino_LCD\User_Setups -I%ARDUINODIR%\libraries\SPI -I%ARDUINODIR%\libraries\Adafruit_ZeroDMA  -I%BOARDDIR%\extras\System -I%BOARDDIR%\extras\TinyUSB\freertos -I%BOARDDIR%\extras\LCD\freertos -I%BOARDDIR%\extras\MCP9600\freertos -I%BOARDDIR%\extras\Lis\freertos -I%ARDUINODIR%\cores\arduino\TinyUSB\Adafruit_TinyUSB_ArduinoCore\tinyusb\src -I%CMSISDIR%\samd51\include -I%ARDUINODIR%\variants\wio_terminal -I%CMSISCOREDIR%\Core\Include -I%CMSISCOREDIR%\DSP\Include -I%FREERTOSDIR%\boards\SAMD21\FreeRTOSVariant -I%FREERTOSDIR%\boards\SAMD51\FreeRTOSVariant
 
 @rem  -DTXRXLED_ENABLE
 
@@ -75,7 +75,7 @@ call %CCOMPILER% %BOARDDIR%\extras\TinyUSB\freertos\samd51_usb_init.c -o %TARGET
 call %CXXCOMPILER% %BOARDDIR%\extras\LCD\freertos\samd51_wio_tft.cpp -o %TARGETDIR%\samd51_wio_tft.o
 call %CXXCOMPILER% %BOARDDIR%\extras\LCD\freertos\samd51_wio_tft_sprite.cpp -o %TARGETDIR%\samd51_wio_tft_sprite.o
 call %CXXCOMPILER% %BOARDDIR%\extras\LisSensor\freertos\samd51_wio_lis.cpp -o %TARGETDIR%\samd51_wio_lis.o
-
+call %CXXCOMPILER% %BOARDDIR%\extras\MCP9600\freertos\samd51_wio_mcp9600.cpp -o %TARGETDIR%\samd51_wio_mcp9600.o
 
 call %CXXCOMPILER% %ARDUINODIR%\variants\wio_terminal\variant.cpp -o %TARGETDIR%\variant.o
 @rem call %CCOMPILER% -c -g -x assembler-with-cpp %ARDUINODIR%\cores\arduino\pulse_asm.S -o %TARGETDIR%\pulse_asm.o
@@ -137,6 +137,7 @@ call %CXXCOMPILER% %ARDUINODIR%\libraries\Adafruit_ZeroDMA\Adafruit_ZeroDMA.cpp 
 
 call %CXXCOMPILER% %ARDUINODIR%\libraries\Wire\Wire.cpp -o %TARGETDIR%\Wire.o
 call %CXXCOMPILER% %ARDUINODIR%\libraries\Seeed_Arduino_LIS3DHTR\src\LIS3DHTR.cpp -o %TARGETDIR%\LIS3DHTR.o
+call %CXXCOMPILER% %ARDUINODIR%\libraries\Seeed_MCP9600\Seeed_MCP9600.cpp -o %TARGETDIR%\Seeed_MCP9600.o
 
 @rem call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\list.o
 @rem call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\event_groups.o
@@ -201,6 +202,7 @@ call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\samd51_
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\samd51_wio_tft.o
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\samd51_wio_tft_sprite.o
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\samd51_wio_lis.o
+call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\samd51_wio_mcp9600.o
 
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\TFT_Interface.o
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\TFT_eSPI.o
@@ -209,6 +211,7 @@ call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\Adafrui
 
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\Wire.o
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\LIS3DHTR.o
+call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\Seeed_MCP9600.o
 
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\Uart.o
 call %GCC%\bin\arm-none-eabi-ar rcs %TARGETDIR%\%TARGETNAME% %TARGETDIR%\WMath.o
