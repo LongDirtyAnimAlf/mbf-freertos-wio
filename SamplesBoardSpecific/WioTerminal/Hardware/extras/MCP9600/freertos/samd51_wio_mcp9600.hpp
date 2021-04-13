@@ -3,9 +3,14 @@
 
 #ifdef __cplusplus
 
+#include "Arduino.h"
+#include "variant.h"
 #include "Seeed_MCP9600.h"
 
 typedef MCP9600 *MCP9600Handle;
+
+extern SERCOM PERIPH_WIRE;
+extern TwoWire Wire;
 
 #endif
 

@@ -23,23 +23,47 @@
  */
 
 #include <new>
-#include "Arduino.h"
-#include "variant.h"
 #include "samd51_wio_mcp9600.hpp"
 
 MCP9600Handle mcp9600_init(void)
 {
+
+   /*
+   if (&PERIPH_WIRE1)
+   {
+      // destruct            
+      PERIPH_WIRE1.~SERCOM();
+      // create again on same spot
+      new (&PERIPH_WIRE1) SERCOM(SERCOM4);
+   }
+   else
+   {
+      PERIPH_WIRE1 = SERCOM(SERCOM4);
+   }
+
+   if (&Wire1)
+   {
+      // destruct
+      Wire1.~TwoWire();
+      // create again on same spot    
+      new (&Wire1) TwoWire (&PERIPH_WIRE1, PIN_WIRE1_SDA, PIN_WIRE1_SCL);
+   }
+   else
+   {
+      Wire1 = TwoWire (&PERIPH_WIRE1, PIN_WIRE1_SDA, PIN_WIRE1_SCL);
+   }
+   */
 
    if (&PERIPH_WIRE)
    {
       // destruct            
       PERIPH_WIRE.~SERCOM();
       // create again on same spot
-      new (&PERIPH_WIRE) SERCOM(sercom3);
+      new (&PERIPH_WIRE) SERCOM(SERCOM3);
    }
    else
    {
-      PERIPH_WIRE = SERCOM(sercom3);
+      PERIPH_WIRE = SERCOM(SERCOM3);
    }
 
    if (&Wire)
@@ -54,9 +78,8 @@ MCP9600Handle mcp9600_init(void)
       Wire = TwoWire (&PERIPH_WIRE, PIN_WIRE_SDA, PIN_WIRE_SCL);
    }
 
-   MCP9600 *mysensor = new MCP9600;
-
-   mysensor->IIC_begin();
+   //MCP9600 *mysensor = new MCP9600(Wire,DEFAULT_IIC_ADDR);
+   MCP9600 *mysensor = new MCP9600();
  
    return mysensor;
 }
