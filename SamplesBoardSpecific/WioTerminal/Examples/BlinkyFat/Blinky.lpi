@@ -38,8 +38,8 @@
       <Filename Value="bin\Blinky"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\mbf-freertos\source"/>
-      <OtherUnitFiles Value="..\..\..\..\..\mbf-freertos\source"/>
+      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\mbf-freertos-don\source"/>
+      <OtherUnitFiles Value="..\..\..\..\..\mbf-freertos-don\source"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
